@@ -1,0 +1,6 @@
+D:\Jay work document\.Net Technology\Program\DemoProject\Database1\bin\Release\Database1.dacpac
+D:\Jay work document\.Net Technology\Program\DemoProject\Database1\bin\Release\Database1.dll
+D:\Jay work document\.Net Technology\Program\DemoProject\Database1\bin\Release\Database1.pdb
+D:\Jay work document\.Net Technology\Program\DemoProject\Database1\obj\Release\Database1.sqlproj.AssemblyReference.cache
+D:\Jay work document\.Net Technology\Program\DemoProject\Database1\obj\Release\Database1.dll
+D:\Jay work document\.Net Technology\Program\DemoProject\Database1\obj\Release\Database1.pdb
