@@ -1,0 +1,96 @@
+using System;
+using System.Collections;
+
+public class HelloWorld
+{
+    public void DisplayData(SqlConnection con){
+        con.open();
+        SqlCommand objCommand = new SqlCommand();
+        objCommand.Connection = con;
+        objCommand.CommandType = CommandType.Text;
+        objCommand.CommandText="SELECT * FROM STUDENT";
+        SqlDataReader objSDR = objCommand.ExecuteReader();
+        console.WriteLine(objSDR)
+        while (reader.Read()){
+         int rollnum = reader.GetInt32("rollnum");
+         string name = reader.GetString("name");
+        int mark = reader.GetInt32("marks");
+        Console.WriteLine($"ID: {rollnum}, Name: {name}, marks: {mark}");
+        }
+        con.Close();
+    }
+    public void SearchData(SqlConnection con){
+        Console.WriteLine("enter your roll number:");
+        int rnum=Convert.ToInt32(Console.ReadLine());
+        con.open();
+        SqlCommand objCommand = new SqlCommand();
+        objCommand.Connection = con;
+        objCommand.CommandType = CommandType.Text;
+        objCommand.CommandText=$"SELECT * FROM STUDENT WHERE ROLLNUM={rnum}";
+        SqlDataReader objSDR = objCommand.ExecuteReader();
+        console.WriteLine(objSDR)
+        while (reader.Read()){
+         int rollnum = reader.GetInt32("rollnum");
+         string name = reader.GetString("name");
+        int mark = reader.GetInt32("marks");
+        Console.WriteLine($"ID: {rollnum}, Name: {name}, marks: {mark}");
+        }
+        con.Close();
+    }
+    public void Delete(){
+        con.open();
+        SqlCommand objCommand = new SqlCommand();
+        objCommand.Connection = con;
+        objCommand.CommandType = CommandType.Text;
+        objCommand.CommandText="DELETE FROM STUDENT WHERE NAME="superman"";
+        int num=objCommand.ExecuteNonQuery();
+        Console.WriteLine(num+"number of rows affected:");
+    }
+    public void AddData(){
+        int rnum=123;
+        string NAME="JAYANT-VENOM";
+        string MARK="MARK 7 FIGHTER";
+        con.open();
+        SqlCommand objCommand = new SqlCommand();
+        objCommand.Connection = con;
+        objCommand.CommandType = CommandType.Text;
+        objCommand.CommandText="INSERT INTO TableName (ROLLNUM,NAME,MARK) VALUES ({RNUM},{NAME},{MARK})";
+        int num=objCommand.ExecuteNonQuery();
+        Console.WriteLine(num+"number of rows affected:");
+    }
+    public static void Main(string[] args)
+    {
+            SqlConnection objConnection = new SqlConnection();
+            objConnection.ConnectionString =
+            @“Data Source=ComputerName\SQLInstance;Initial Catalog=DatabaseName;
+            Integrated Security=False; User ID=Abc; Password=123;";
+
+            //Step 2: Prepare & Execute Command
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.Connection = objConnection;
+            objCommand.CommandType = CommandType.Text;
+            bool flag=true;
+            while(flag){
+                Console.WriteLine("1)Display Data\n2)Delete data\n 3)search by roll number\n 4)Add new data\n 5)Exit");
+                switch(Console.ReadLine()){
+                    case "1":
+                        DisplayData();
+                        break;
+                    case "2":
+                        Delete();
+                    case "3":
+                        SearchData();
+                    case "4":
+                        AddData();
+                    case "5":
+                        flag=false;
+                        break;
+                    default:
+                        Console.WriteLine("Enter Correct Option!!");
+                        break;
+                }
+            }
+        
+           
+    }
+}
